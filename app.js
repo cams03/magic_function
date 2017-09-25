@@ -1,13 +1,16 @@
-var number = 0;
-var increase
-function magic_inc(valeur, inc) {
-  number = valeur;
-  increase = inc;
-  increase = function() {
-      if (number[0] === 0) {
-        number = number + 0.1;
-      }
-  }
-return number;
+var test = function (nombre) {
+ 	valeur = nombre.toString();
+    for(var i=0;i<valeur.length;i++) {
+	    if (valeur.length === 2) {
+	    	valeur = Number(valeur) + 10;
+	 		console.log(valeur);
+	    } else if (valeur.length === 3) {
+	    	valeur = Number(valeur) + 100;
+	    	console.log(valeur);
+	    } else if (valeur[2] === ".") {
+	    	valeur = Number(valeur) + 0.1;
+	    	console.log(valeur);
+	    }
+    }
 }
-console.log(magic_inc(0.1,increase));
+test(0.1);
