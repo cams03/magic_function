@@ -1,16 +1,13 @@
-var inc;
-var dec;
 var magicFunction = function (nombre,inc,dec) {
 	var valeur = nombre.toString();
     console.log(valeur);
-    if (inc) {
+    if (inc === "inc") {
 	    if (valeur[1] === "." || valeur[2] === ".") {
 	        var lastNumber = Number(valeur.charAt(valeur.length - 1));
 	        valeur = valeur.replace(lastNumber, (lastNumber + 1));
 	        valeur = Number(valeur);
 	    } else if (valeur.length === 1) {
 	    	valeur = Number(valeur) +1;
-	    	console.log(valeur);
 	    } else if (valeur.length === 2) {
 	        var roundNumber = Number(valeur[0]) +1;
 	        var roundStr = roundNumber.toString();
@@ -27,15 +24,13 @@ var magicFunction = function (nombre,inc,dec) {
 	        valeurTemp = roundStr + "000";
 	        valeur = Number(valeurTemp);
 	    }
-	} else if (dec) {
+	} else {
 		if (valeur[1] === "." || valeur[2] === ".") {
 	        var lastNumber = Number(valeur.charAt(valeur.length - 1))
-	        console.log(lastNumber);
 	        valeur = valeur.replace(lastNumber, (lastNumber - 1));
 	        valeur = Number(valeur);
-	        console.log(valeur);
 	    } else if (valeur.length === 2) {
-	        var roundNumber = Number(valeur[0]) +1;
+	        var roundNumber = Number(valeur[0]) -1;
 	        console.log(roundNumber);
 	        var roundStr = roundNumber.toString();
 	        console.log(roundStr);
@@ -62,4 +57,4 @@ var magicFunction = function (nombre,inc,dec) {
 	}
     return valeur;
 }
-        console.log(magicFunction(200,dec));
+console.log(magicFunction(4500,"dec"));
