@@ -29,6 +29,8 @@ var magicFunction = function (nombre,inc,dec) {
 	        var lastNumber = Number(valeur.charAt(valeur.length - 1))
 	        valeur = valeur.replace(lastNumber, (lastNumber - 1));
 	        valeur = Number(valeur);
+	    } else if (valeur.length === 1) {
+	    	valeur = Number(valeur) -1;
 	    } else if (valeur.length === 2) {
 	        var roundNumber = Number(valeur[0]) -1;
 	        console.log(roundNumber);
@@ -57,4 +59,4 @@ var magicFunction = function (nombre,inc,dec) {
 	}
     return valeur;
 }
-console.log(magicFunction(4500,"dec"));
+console.log(magicFunction(3,"dec"));
