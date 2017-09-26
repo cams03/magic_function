@@ -1,69 +1,65 @@
-var test = function (nombre) {
-        function decimalAdjust(type, value, exp) {
-            // Si la valeur de exp n'est pas définie ou vaut zéro...
-            if (typeof exp === 'undefined' || +exp === 0) {
-                return Math[type](value);
-            }
-            value = +value;
-            exp = +exp;
-            // Si la valeur n'est pas un nombre 
-            // ou si exp n'est pas un entier...
-            if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-                return NaN;
-            }
-            // Si la valeur est négative
-            if (value < 0) {
-                return -decimalAdjust(type, -value, exp);
-            }
-            // Décalage
-            value = value.toString().split('e');
-            value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-            // Décalage inversé
-            value = value.toString().split('e');
-            return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
-        }
-
-        // Arrondi décimal inférieur
-        if (!Math.floor10) {
-            Math.floor10 = function (value, exp) {
-                return decimalAdjust('floor', value, exp);
-            };
-            x = Math.floor(nombre);
-            console.log(x);
-            valeur = x.toString();
-            console.log(valeur);
-            if (valeur[1] === "." || valeur[2] === ".") {
-                lastIndex = valeur.charAt(valeur.length - 1);
-                lastNumber = Number(lastIndex);
-                valeur = valeur.replace(lastNumber, (lastNumber + 1));
-            } else if (valeur.length === 2) {
-                console.log(valeur[0]);
-                firstIndex = valeur.charAt(valeur[0]);
-                console.log(firstIndex);
-                firstNumber = Number(firstIndex);
-                console.log(firstNumber);
-                increase = firstNumber + 1;
-                console.log(increase);
-                str = increase.toString();
-                console.log(str);
-                valeurTemp = str + "0";
-                console.log(valeurTemp);
-                valeur = Number(valeurTemp);
-                /*lastIndex = valeur.charAt(valeur.length - 1);
-                console.log(lastIndex)
-                lastNumber = Number(lastIndex);
-                lastNumber = 0;
-                console.log(lastNumber);
-                console.log(valeur);
-                valeur = valeur.replace(lastNumber, 0) + 10;
-                console.log(valeur);
-                valeur = */
-                //valeur = Number(valeur2) + 10;
-            } else if (valeur.length === 3) {
-                valeur = Number(valeur) + 100;
-            } else if (valeur.length === 4) {
-                valeur = Number(valeur) + 1000;
-            }
-            return valeur;
-        }
-        console.log(test(12));
+var inc;
+var dec;
+var magicFunction = function (nombre,inc,dec) {
+	var valeur = nombre.toString();
+    console.log(valeur);
+    if (inc) {
+	    if (valeur[1] === "." || valeur[2] === ".") {
+	        var lastNumber = Number(valeur.charAt(valeur.length - 1));
+	        valeur = valeur.replace(lastNumber, (lastNumber + 1));
+	        valeur = Number(valeur);
+	    } else if (valeur.length === 1) {
+	    	valeur = Number(valeur) +1;
+	    	console.log(valeur);
+	    } else if (valeur.length === 2) {
+	        var roundNumber = Number(valeur[0]) +1;
+	        var roundStr = roundNumber.toString();
+	        var valeurTemp = roundStr + "0";
+	        valeur = Number(valeurTemp);
+	   	} else if (valeur.length === 3) {
+	        roundNumber = Number(valeur[0]) +1;
+	        roundStr = roundNumber.toString();
+	        valeurTemp = roundStr + "00";
+	        valeur = Number(valeurTemp);
+		} else if (valeur.length === 4) {
+	        roundNumber = Number(valeur[0]) +1;
+	        roundStr = roundNumber.toString();
+	        valeurTemp = roundStr + "000";
+	        valeur = Number(valeurTemp);
+	    }
+	} else if (dec) {
+		if (valeur[1] === "." || valeur[2] === ".") {
+	        var lastNumber = Number(valeur.charAt(valeur.length - 1))
+	        console.log(lastNumber);
+	        valeur = valeur.replace(lastNumber, (lastNumber - 1));
+	        valeur = Number(valeur);
+	        console.log(valeur);
+	    } else if (valeur.length === 2) {
+	        var roundNumber = Number(valeur[0]) +1;
+	        console.log(roundNumber);
+	        var roundStr = roundNumber.toString();
+	        console.log(roundStr);
+	        var valeurTemp = roundStr + "0";
+	        console.log(valeurTemp);
+	        valeur = Number(valeurTemp);
+	   	} else if (valeur.length === 3) {
+	        roundNumber = Number(valeur[0]) -1;
+	        console.log(roundNumber);
+	        roundStr = roundNumber.toString();
+	        console.log(roundStr);
+	        valeurTemp = roundStr + "00";
+	        console.log(valeurTemp);
+	        valeur = Number(valeurTemp);
+		} else if (valeur.length === 4) {
+	        roundNumber = Number(valeur[0]) -1;
+	        console.log(roundNumber);
+	        roundStr = roundNumber.toString();
+	        console.log(roundStr);
+	        valeurTemp = roundStr + "000";
+	        console.log(valeurTemp);
+	        valeur = Number(valeurTemp);
+	    }
+	}
+    return valeur;
+}
+        console.log(magicFunction(200,dec));
