@@ -1,5 +1,5 @@
 var magicFunction = function (nombre,inc,dec) {
-	if (typeof nombre === "number" || nombre != "0") {
+	if (typeof nombre === "number") {
     	var valeur = nombre.toString();
     	console.log(valeur);
         if (inc === "inc") {
@@ -115,4 +115,4 @@ var magicFunction = function (nombre,inc,dec) {
     } else {return 0;}
 return valeur;
 }
-console.log(magicFunction(0,"inc"));
+console.log(magicFunction(250,"dec"));
